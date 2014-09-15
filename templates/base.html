@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link type="text/css" rel="stylesheet" href="/static/main.css" />
+
+  <title>Wiki</title>
+</head>
+
+<body>
+  <a href="/blog" class="main-title">
+    Wiki
+  </a>
+
+
+ <div class="login-area">
+    <!-- page_name:{{webpage.name}} -->
+
+    {% if editting %}
+      <a class="login-link"  href="/{{webpage.name}}">view</a>
+      |
+    {% elif user %}
+      <a class="login-link"  href="/_edit/{{webpage.name}}" >edit</a>
+      |
+    {% endif %}
+      <a class="login-link"  href="/_history/{{webpage.name}}">history</a>
+
+
+    <br>
+    {% if user %}
+      <span > {{user.username}} (<a class="login-link" href="/logout">logout</a>) </span>
+    {% else %}
+      <a class="login-link"  href="/login">login</a>
+      |
+      <a class="login-link"  href="/signup">signup</a>
+    {% endif %}    
+
+      
+  </div>
+
+  <br>
+  <div id="content">
+  {% block content %}
+  {% endblock %}
+  </div>
+</body>
+
+</html>
+
